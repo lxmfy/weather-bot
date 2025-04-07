@@ -5,8 +5,8 @@ import LXMF
 import mgrs
 import requests
 from lxmfy import EventPriority, LXMFBot
-from lxmfy.events import Event
 from lxmfy.attachments import Attachment, AttachmentType
+from lxmfy.events import Event
 
 LAT_LON_REGEX = re.compile(r"^\s*(-?\d{1,3}(\.\d+)?)\s*,\s*(-?\d{1,3}(\.\d+)?)\s*$")
 MGRS_REGEX = re.compile(r"^\s*\d{1,2}[C-X][A-Z]{2}\d{2,10}\s*$", re.IGNORECASE)
@@ -58,14 +58,13 @@ class WeatherBot:
                 if lat is not None and lon is not None:
                     weather_info = self.get_weather(lat, lon, location_name=location_name)
                     if weather_info:
-                        image_content = None
+                        attachment_obj = None
                         if self.debug_mode:
                             print(f"[DEBUG] Checking if location ({lat:.2f}, {lon:.2f}) is in CONUS...")
                         if self.is_in_conus(lat, lon):
                             if self.debug_mode:
                                 print("[DEBUG] Location IS in CONUS. Attempting to fetch GOES image...")
                             image_data = self.fetch_goes_conus_image()
-                            attachment_obj = None
                             if image_data:
                                 if self.debug_mode:
                                     print(f"[DEBUG] GOES image fetched successfully ({len(image_data)} bytes). Preparing attachment object...")
