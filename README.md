@@ -1,6 +1,6 @@
 # LXMFY Weather Bot
 
-An LXMFY bot that provides weather information for a given location using Open-Meteo's API.
+An LXMFY bot that provides weather information for a given location using Open-Meteo's API and sends a Image attachment of the latest GOES satellite image (if in the USA only).
 
 ## Usage
 
@@ -13,17 +13,4 @@ or
 
 ```bash
 poetry run python bot.py --debug
-```
-
-## Docker
-
-```bash
-docker build -t weather-bot .
-docker run -d --name weather-bot weather-bot
-```
-
-## Docker Compose
-
-```bash
-docker-compose up -d
 ```
