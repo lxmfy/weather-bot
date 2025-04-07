@@ -1,0 +1,42 @@
+[project]
+name = "weather-bot"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Sudo-Ivan"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "lxmfy (>=0.6.5,<0.7.0)",
+    "keyrings-cryptfile (>=1.3.9,<2.0.0)",
+    "requests (>=2.32.3,<3.0.0)",
+    "mgrs (>=1.5.0,<2.0.0)",
+    "packaging (>=24.2,<25.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.11.4"
+bandit = "^1.8.3"
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+]
+ignore = ["F401", "E501"]
