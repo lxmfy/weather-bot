@@ -1,6 +1,6 @@
 [project]
 name = "weather-bot"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = [
     {name = "Sudo-Ivan"}
@@ -8,9 +8,9 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
-    "lxmfy (>=0.6.5,<0.7.0)",
+    "lxmfy (>=1.1.0,<2.0.0)",
     "keyrings-cryptfile (>=1.3.9,<2.0.0)",
-    "requests (>=2.32.3,<3.0.0)",
+    "requests (>=2.32.5,<3.0.0)",
     "mgrs (>=1.5.0,<2.0.0)",
     "packaging (>=24.2,<25.0)"
 ]
@@ -21,8 +21,16 @@ requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.11.4"
+ruff = "^0.13.3"
 bandit = "^1.8.3"
+
+[tool.poetry]
+packages = [
+    {include = "weather_bot"}
+]
+
+[tool.poetry.scripts]
+weather-bot = "weather_bot.bot:main"
 
 [tool.ruff.lint]
 select = [
