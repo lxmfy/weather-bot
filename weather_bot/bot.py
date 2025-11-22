@@ -1,6 +1,7 @@
 """Weather bot module."""
 
 import argparse
+import os
 import re
 
 import mgrs
@@ -775,6 +776,11 @@ def main():
     global DEBUG_MODE
     DEBUG_MODE = args.debug
 
+    if args.config_path:
+        os.environ["RNSCONFIGPATH"] = args.config_path
+    if args.identity_path:
+        os.environ["RNS_IDENTITY_FILE"] = args.identity_path
+
     bot_kwargs = {
         "name": "Weather Bot",
         "command_prefix": "",
@@ -784,11 +790,6 @@ def main():
         "announce_immediately": False,
         "first_message_enabled": True,
     }
-
-    if args.config_path:
-        bot_kwargs["config_path"] = args.config_path
-    if args.identity_path:
-        bot_kwargs["identity_path"] = args.identity_path
 
     bot = LXMFBot(**bot_kwargs)
 
